@@ -5,6 +5,7 @@ public class Player : MonoBehaviour {
 
 	private Transform groundCheck;
 	private bool grounded = true;
+	public float maxspeed = 5f;
 
 	// Use this for initialization
 	void Start () {
@@ -18,11 +19,15 @@ public class Player : MonoBehaviour {
 		grounded = Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
 		if(Input.GetKey(KeyCode.RightArrow)){
-			rigidbody.velocity = new Vector2(2f,rigidbody.velocity.y);
+			if(rigidbody.velocity.x < maxspeed){
+				rigidbody.AddForce(new Vector2(15f,0f));
+			}
 		}
 		
 		if(Input.GetKey(KeyCode.LeftArrow)){
-			rigidbody.velocity = new Vector2(-2f,rigidbody.velocity.y);
+			if(rigidbody.velocity.x > (maxspeed *-1)){
+				rigidbody.AddForce(new Vector2(-15f,0f));
+			}
 		}
 		
 		if(Input.GetKeyDown(KeyCode.UpArrow) && grounded){
