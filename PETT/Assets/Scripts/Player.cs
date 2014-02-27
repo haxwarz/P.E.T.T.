@@ -33,6 +33,25 @@ public class Player : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.UpArrow) && grounded){
 			rigidbody.AddForce(new Vector2(0f,250f));
 		}
+
+		if(Input.GetButtonDown("Fire3")){
+			interact();
+		}
 	
+	}
+
+	void OnCollisionStay(Collision collisionInfo) {
+		if (collisionInfo.gameObject.tag == "platform") {
+			transform.parent = collisionInfo.transform;
+				} else {
+						transform.parent = null;
+				}
+
+	}
+
+	void interact(){
+		Vector3 dept = transform.TransformDirection(new Vector3(0,0,1));
+		if (Physics.Raycast(transform.position, dept))
+			print("There is something behind the object!");
 	}
 }
