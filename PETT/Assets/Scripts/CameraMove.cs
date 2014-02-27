@@ -15,6 +15,7 @@ public class CameraMove : MonoBehaviour {
 		mainCamera = (GameObject) GameObject.FindWithTag ("MainCamera");
 		leftLimit = GameObject.FindWithTag ("leftwall").transform.position.x + 2.5f;
 		print (GameObject.FindWithTag ("leftwall").transform.position.x.ToString ());
+
 	}
 	
 	// Update is called once per frame

@@ -7,9 +7,12 @@ public class Player : MonoBehaviour {
 	private bool grounded = true;
 	public float maxspeed = 5f;
 
+	public GameObject gui;
+
 	// Use this for initialization
 	void Start () {
 		groundCheck = transform.Find("groundCheck");
+		gui.SetActive (false);
 	
 	}
 	
@@ -34,14 +37,17 @@ public class Player : MonoBehaviour {
 			rigidbody.AddForce(new Vector2(0f,250f));
 		}
 
-		if(Input.GetButtonDown("Fire3")){
+		if(Input.GetButtonDown("Fire1")){
 			interact();
 		}
-	
+		
+		if(Input.GetButtonDown("Fire2")){
+			gui.SetActive(!gui.activeSelf);
+		}
 	}
 
 	void OnCollisionStay(Collision collisionInfo) {
-		if (collisionInfo.gameObject.tag == "platform") {
+		if (collisionInfo.gameObject.tag == "platform" && grounded) {
 			transform.parent = collisionInfo.transform;
 				} else {
 						transform.parent = null;
@@ -50,8 +56,10 @@ public class Player : MonoBehaviour {
 	}
 
 	void interact(){
+		RaycastHit hitInfo;
 		Vector3 dept = transform.TransformDirection(new Vector3(0,0,1));
-		if (Physics.Raycast(transform.position, dept))
-			print("There is something behind the object!");
+		if (Physics.Raycast (transform.position, dept, out hitInfo, 100, 1 << 9)) {
+			hitInfo.collider.SendMessageUpwards("interact");
+		}
 	}
 }

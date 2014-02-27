@@ -12,11 +12,12 @@ public class ComputerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey (KeyCode.D)) {
-			platform.transform.position += Vector3.right * 1 * Time.deltaTime;
-		}
 		if (Input.GetKey (KeyCode.A)) {
 			platform.transform.position += Vector3.left * 1 * Time.deltaTime;
 		}
+	}
+
+	void interact(){
+		platform.transform.position += Vector3.right * 1 * Time.deltaTime;
 	}
 }
