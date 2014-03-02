@@ -7,17 +7,16 @@ public class ComputerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
 	}
-	
 	// Update is called once per frame
 	void Update () {
 
 	}
 
-	void interact(){
+	public void interact(){
 		//platform.transform.position += Vector3.right * 1 * Time.deltaTime;
-		MovingPlatform movePlatform = platform.gameObject.GetComponent<MovingPlatform>();
-		movePlatform.interact ();
+		//movePlatform.interact ();
+		platform.GetComponent<MovingPlatform> ().interact();
+
 	}
 }

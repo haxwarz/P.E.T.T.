@@ -55,11 +55,11 @@ public class Player : MonoBehaviour {
 
 	}
 
-	void interact(){
+	public void interact(){
 		RaycastHit hitInfo;
 		Vector3 dept = transform.TransformDirection(new Vector3(0,0,1));
 		if (Physics.Raycast (transform.position, dept, out hitInfo, 100, 1 << 9)) {
-			hitInfo.collider.SendMessageUpwards("interact");
+			hitInfo.collider.gameObject.GetComponent<ComputerController>().interact();
 		}
 	}
 }
