@@ -10,6 +10,8 @@ public class Player : MonoBehaviour {
 	public float maxspeed = 5f;
 	public float jumpPower = 250f;
 
+	public Vector3 checkpoint;
+
 	// Use this for initialization
 	void Start () {
 		groundCheck = transform.Find("groundCheck");
@@ -20,6 +22,15 @@ public class Player : MonoBehaviour {
 	void Update () {
 
 		grounded = Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+
+		if (Physics.Linecast (transform.position, groundCheck.position, 1 << LayerMask.NameToLayer ("OffWorld"))) {
+			this.transform.position = checkpoint;
+			rigidbody.velocity=new Vector2(0f,0f);
+		}
+
+		if (Physics.Linecast (transform.position, groundCheck.position, 1 << LayerMask.NameToLayer ("Checkpoint"))) {
+			checkpoint = this.transform.position;
+		}
 
 		if(Input.GetKey(KeyCode.RightArrow) && movable){
 			if(rigidbody.velocity.x < maxspeed){
