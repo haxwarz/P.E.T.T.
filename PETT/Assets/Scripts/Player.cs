@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 	private Transform groundCheck;
 	private bool grounded = true;
 	public float maxspeed = 5f;
+	public float jumpPower = 250f;
 
 	public GameObject gui;
 
@@ -25,16 +26,22 @@ public class Player : MonoBehaviour {
 			if(rigidbody.velocity.x < maxspeed){
 				rigidbody.AddForce(new Vector2(15f,0f));
 			}
+			else{
+				rigidbody.velocity=new Vector2(maxspeed, rigidbody.velocity.y);
+			}
 		}
 		
 		if(Input.GetKey(KeyCode.LeftArrow)){
-			if(rigidbody.velocity.x > (maxspeed *-1)){
+			if(rigidbody.velocity.x > (-maxspeed)){
 				rigidbody.AddForce(new Vector2(-15f,0f));
+			}
+			else{
+				rigidbody.velocity=new Vector2(-maxspeed, rigidbody.velocity.y);
 			}
 		}
 		
 		if(Input.GetKeyDown(KeyCode.UpArrow) && grounded){
-			rigidbody.AddForce(new Vector2(0f,250f));
+			rigidbody.AddForce(new Vector2(0f,jumpPower));
 		}
 
 		if(Input.GetButtonDown("Fire1")){
