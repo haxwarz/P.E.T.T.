@@ -32,7 +32,7 @@ public class Player : MonoBehaviour {
 			checkpoint = this.transform.position;
 		}
 
-		if(Input.GetKey(KeyCode.RightArrow) && grounded && movable){
+		if(Input.GetKey(KeyCode.RightArrow) && movable){
 			if(rigidbody.velocity.x < maxspeed){
 				rigidbody.AddForce(new Vector2(15f,0f));
 			}
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour {
 			}
 		}
 		
-		if(Input.GetKey(KeyCode.LeftArrow) && grounded && movable){
+		if(Input.GetKey(KeyCode.LeftArrow) && movable){
 			if(rigidbody.velocity.x > (-maxspeed)){
 				rigidbody.AddForce(new Vector2(-15f,0f));
 			}
