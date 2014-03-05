@@ -13,11 +13,11 @@ public class CameraMove : MonoBehaviour {
 	
 	void Start () {
 		mainCamera = (GameObject) GameObject.FindWithTag ("MainCamera");
-		leftLimit = GameObject.FindWithTag ("leftwall").transform.position.x + 2.5f;
+		//leftLimit = GameObject.FindWithTag ("leftwall").transform.position.x + 2.5f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		mainCamera.transform.position = new Vector3(/*Mathf.Clamp(*/transform.position.x/*, leftLimit, rightLimit)*/,/*Mathf.Clamp(*/transform.position.y/*, bottomlimit, toplimit)*/,5);
+		mainCamera.transform.position = new Vector3(/*Mathf.Clamp(*/transform.position.x/*, leftLimit, rightLimit)*/,/*Mathf.Clamp(*/transform.position.y/*, bottomlimit, toplimit)*/,transform.position.z-3);
 	}
 }
