@@ -5,15 +5,14 @@ public class Player : MonoBehaviour {
 
 	private Transform groundCheck;
 	private bool grounded = true;
+	private bool movable = true;
+
 	public float maxspeed = 5f;
 	public float jumpPower = 250f;
-
-	public GameObject gui;
 
 	// Use this for initialization
 	void Start () {
 		groundCheck = transform.Find("groundCheck");
-		gui.SetActive (false);
 	
 	}
 	
@@ -22,7 +21,7 @@ public class Player : MonoBehaviour {
 
 		grounded = Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
-		if(Input.GetKey(KeyCode.RightArrow)){
+		if(Input.GetKey(KeyCode.RightArrow) && movable){
 			if(rigidbody.velocity.x < maxspeed){
 				rigidbody.AddForce(new Vector2(15f,0f));
 			}
@@ -31,7 +30,7 @@ public class Player : MonoBehaviour {
 			}
 		}
 		
-		if(Input.GetKey(KeyCode.LeftArrow)){
+		if(Input.GetKey(KeyCode.LeftArrow) && movable){
 			if(rigidbody.velocity.x > (-maxspeed)){
 				rigidbody.AddForce(new Vector2(-15f,0f));
 			}
@@ -40,16 +39,16 @@ public class Player : MonoBehaviour {
 			}
 		}
 		
-		if(Input.GetKeyDown(KeyCode.UpArrow) && grounded){
+		if(Input.GetKeyDown(KeyCode.UpArrow) && grounded && movable){
 			rigidbody.AddForce(new Vector2(0f,jumpPower));
 		}
 
-		if(Input.GetButtonDown("Fire1")){
+		if(Input.GetButtonDown("Fire1") && movable){
 			interact();
 		}
 		
 		if(Input.GetButtonDown("Fire2")){
-			gui.SetActive(!gui.activeSelf);
+			movable = !movable;
 		}
 	}
 
@@ -67,6 +66,7 @@ public class Player : MonoBehaviour {
 		Vector3 dept = transform.TransformDirection(new Vector3(0,0,1));
 		if (Physics.Raycast (transform.position, dept, out hitInfo, 100, 1 << 9)) {
 			hitInfo.collider.gameObject.GetComponent<ComputerController>().interact();
+			movable = false;
 		}
 	}
 }
