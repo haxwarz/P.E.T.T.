@@ -4,7 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	private Transform groundCheck;
-	private bool grounded = true;
+	private bool grounded = false;
 	private bool movable = true;
 
 	public float maxspeed = 5f;
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour {
 			checkpoint = this.transform.position;
 		}
 
-		if(Input.GetKey(KeyCode.RightArrow) && movable){
+		if(Input.GetKey(KeyCode.RightArrow) && grounded && movable){
 			if(rigidbody.velocity.x < maxspeed){
 				rigidbody.AddForce(new Vector2(15f,0f));
 			}
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour {
 			}
 		}
 		
-		if(Input.GetKey(KeyCode.LeftArrow) && movable){
+		if(Input.GetKey(KeyCode.LeftArrow) && grounded && movable){
 			if(rigidbody.velocity.x > (-maxspeed)){
 				rigidbody.AddForce(new Vector2(-15f,0f));
 			}
