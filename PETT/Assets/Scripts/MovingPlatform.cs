@@ -58,13 +58,13 @@ public class MovingPlatform : MonoBehaviour
     {
         if (destinations.Count == 0)
         {
-            if (this.transform.position.x - horizontalMove >= borderLeft)
+            //if (this.transform.position.x - horizontalMove >= borderLeft)
                 destinations.Add(new Vector3(this.transform.position.x - horizontalMove, this.transform.position.y, this.transform.position.z));
         }
         else
         {
             Vector3 temp = (Vector3)destinations[destinations.Count - 1];
-            if(temp.x - horizontalMove >= borderLeft)
+            //if(temp.x - horizontalMove >= borderLeft)
                 destinations.Add(new Vector3(temp.x - horizontalMove, temp.y, temp.z));
         }
     }
@@ -73,13 +73,13 @@ public class MovingPlatform : MonoBehaviour
     {
         if (destinations.Count == 0)
         {
-            if(this.transform.position.x + horizontalMove <= borderRight)
+            //if(this.transform.position.x + horizontalMove <= borderRight)
                 destinations.Add(new Vector3(this.transform.position.x + horizontalMove, this.transform.position.y, this.transform.position.z));
         }
         else
         {
             Vector3 temp = (Vector3)destinations[destinations.Count - 1];
-            if(temp.x + horizontalMove <= borderRight)
+            //if(temp.x + horizontalMove <= borderRight)
                 destinations.Add(new Vector3(temp.x + horizontalMove, temp.y, temp.z));
         }
     }
@@ -88,13 +88,13 @@ public class MovingPlatform : MonoBehaviour
     {
         if (destinations.Count == 0)
         {
-            if(this.transform.position.y + verticalMove <= borderTop)
+            //if(this.transform.position.y + verticalMove <= borderTop)
                 destinations.Add(new Vector3(this.transform.position.x, this.transform.position.y + verticalMove, this.transform.position.z));
         }
         else
         {
             Vector3 temp = (Vector3)destinations[destinations.Count - 1];
-            if(temp.y + verticalMove <= borderTop)
+            //if(temp.y + verticalMove <= borderTop)
                 destinations.Add(new Vector3(temp.x, temp.y + verticalMove, temp.z));
         }
     }
@@ -103,13 +103,13 @@ public class MovingPlatform : MonoBehaviour
     {
         if (destinations.Count == 0)
         {
-            if(this.transform.position.y - verticalMove >= borderBot)
+            //if(this.transform.position.y - verticalMove >= borderBot)
                 destinations.Add(new Vector3(this.transform.position.x, this.transform.position.y - verticalMove, this.transform.position.z));
         }
         else
         {
             Vector3 temp = (Vector3)destinations[destinations.Count - 1];
-            if(temp.y - verticalMove >= borderBot)
+            //if(temp.y - verticalMove >= borderBot)
                 destinations.Add(new Vector3(temp.x, temp.y - verticalMove, temp.z));
         }
     }

@@ -71,6 +71,12 @@ public class Player : MonoBehaviour {
 				}
 
 	}
+	
+	void OnTriggerEnter(Collider collider) {
+		print ("test");
+		collider.gameObject.GetComponent<EndpointController>().interact();
+		
+	}
 
 	public void interact(){
 		RaycastHit hitInfo;
