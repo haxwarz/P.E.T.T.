@@ -80,4 +80,9 @@ public class Player : MonoBehaviour {
 			movable = false;
 		}
 	}
+
+    public void setMovable(bool move)
+    {
+        movable = move;
+    }
 }

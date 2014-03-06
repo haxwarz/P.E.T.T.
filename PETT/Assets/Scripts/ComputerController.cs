@@ -21,12 +21,9 @@ public class ComputerController : MonoBehaviour {
 	}
 
 	public void interact(){
-		//platform.transform.position += Vector3.right * 1 * Time.deltaTime;
-		//movePlatform.interact ();
 		gui.SetActive(true);
 		gui.GetComponent<guiInterface>().startup (this.gameObject);
-		//platform.GetComponent<MovingPlatform> ().interact();
-
+        platform.GetComponent<MovingPlatform>().startup();
 	}
 
 	public void reacted(ArrayList commands){
@@ -46,6 +43,6 @@ public class ComputerController : MonoBehaviour {
 			}
 		}
 
-		//GameObject.Find ("Player").GetComponent<Player> ().movable = true;
+		GameObject.Find ("Player").GetComponent<Player> ().setMovable(true);
 	}
 }
