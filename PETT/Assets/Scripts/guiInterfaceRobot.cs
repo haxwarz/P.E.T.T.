@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class guiInterface : MonoBehaviour
+public class guiInterfaceRobot : MonoBehaviour
 {
-		private GameObject computer;
+		public GameObject robot;
 		public TextMesh text;
 		private ArrayList commands = new ArrayList ();
 		// Use this for initialization
@@ -24,19 +24,22 @@ public class guiInterface : MonoBehaviour
 								if (hit == "UpButton") {
 										commands.Add ("up");
 										text.text += "\nup";
+                                        robot.GetComponent<MovingPlatform>().moveUp();
 								} else if (hit == "DownButton") {
 										commands.Add ("down");
-										text.text += "\ndown";
+                                        text.text += "\ndown";
+                                        robot.GetComponent<MovingPlatform>().moveDown();
 								} else if (hit == "LeftButton") {
 										commands.Add ("left");
-										text.text += "\nleft";
+                                        text.text += "\nleft";
+                                        robot.GetComponent<MovingPlatform>().moveLeft();
 								} else if (hit == "RightButton") {
 										commands.Add ("right");
-										text.text += "\nright";
+                                        text.text += "\nright";
+                                        robot.GetComponent<MovingPlatform>().moveRight();
 								} else if (hit == "UploadButton") {
-										computer.GetComponent<ComputerController> ().reacted (commands);
 
-								} else if (hit == "RemoveButton") {
+                                } else if (hit == "RemoveButton") {
 										string txt = text.text;
 										int index = txt.LastIndexOf ("\n");
 										if (index > 0) {
@@ -50,9 +53,8 @@ public class guiInterface : MonoBehaviour
 				}
 		}
 
-		public void startup (GameObject comp)
+		public void startup ()
 		{
-				computer = comp;
 				text.text = "commands:";
 				commands = new ArrayList ();
 		}
