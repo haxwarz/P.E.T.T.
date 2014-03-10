@@ -5,6 +5,7 @@ public class ComputerController : MonoBehaviour {
 
 	public GameObject platform;
 	public GameObject gui;
+	public GameObject camera;
 
 	public bool ableLeft;
 	public bool ableRight;
@@ -22,12 +23,12 @@ public class ComputerController : MonoBehaviour {
 
 	public void interact(){
 		gui.SetActive(true);
+		camera.SetActive (true);
 		gui.GetComponent<guiInterface>().startup (this.gameObject);
         platform.GetComponent<MovingPlatform>().startup();
 	}
 
 	public void reacted(ArrayList commands){
-		gui.SetActive (false);
 		foreach (string str in commands) {
 			if (str == "up") {
 				platform.GetComponent<MovingPlatform> ().moveUp();
@@ -44,5 +45,7 @@ public class ComputerController : MonoBehaviour {
 		}
 
 		GameObject.Find ("Player").GetComponent<Player> ().setMovable(true);
+		gui.SetActive (false);
+		camera.SetActive (false);
 	}
 }

@@ -7,17 +7,17 @@ public class CameraMove : MonoBehaviour {
 	public float toplimit = 3.5f;
 	public float bottomlimit = 2;
 
-	GameObject mainCamera;
+	public GameObject camera;
 	// Use this for initialization
 	
 	
 	void Start () {
-		mainCamera = (GameObject) GameObject.FindWithTag ("MainCamera");
+		//mainCamera = (GameObject) GameObject.FindWithTag ("MainCamera");
 		//leftLimit = GameObject.FindWithTag ("leftwall").transform.position.x + 2.5f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		mainCamera.transform.position = new Vector3(/*Mathf.Clamp(*/transform.position.x/*, leftLimit, rightLimit)*/,/*Mathf.Clamp(*/transform.position.y/*, bottomlimit, toplimit)*/,transform.position.z-3);
+		camera.transform.position = new Vector3(/*Mathf.Clamp(*/transform.position.x/*, leftLimit, rightLimit)*/,/*Mathf.Clamp(*/transform.position.y/*, bottomlimit, toplimit)*/,transform.position.z-3);
 	}
 }
