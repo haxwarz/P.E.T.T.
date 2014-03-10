@@ -25,7 +25,7 @@ public class ComputerController : MonoBehaviour {
 		gui.SetActive(true);
 		camera.SetActive (true);
 		gui.GetComponent<guiInterface>().startup (this.gameObject);
-        platform.GetComponent<MovingPlatform>().startup();
+        platform.GetComponent<MovingPlatform>().startup(this.gameObject);
 	}
 
 	public void reacted(ArrayList commands){
@@ -43,9 +43,11 @@ public class ComputerController : MonoBehaviour {
 				platform.GetComponent<MovingPlatform> ().moveRight();
 			}
 		}
-
-		GameObject.Find ("Player").GetComponent<Player> ().setMovable(true);
-		gui.SetActive (false);
-		camera.SetActive (false);
 	}
+
+	public void turnOffGUI(){
+				gui.SetActive (false);
+				camera.SetActive (false);
+				GameObject.Find ("Player").GetComponent<Player> ().setMovable(true);
+		}
 }

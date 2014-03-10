@@ -7,6 +7,7 @@ public class MovingPlatform : MonoBehaviour
 
     private ArrayList destinations = new ArrayList();
     private Vector3 startPos;
+	private GameObject computer;
 
     public float horizontalMove = 1f;
     public float verticalMove = 0.2f;
@@ -22,7 +23,7 @@ public class MovingPlatform : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (destinations.Count > 0)
         {
@@ -51,6 +52,10 @@ public class MovingPlatform : MonoBehaviour
                 this.transform.position = currentDestination;
                 destinations.RemoveAt(0);
             }
+
+			if(destinations.Count <= 0){
+				computer.GetComponent<ComputerController> ().turnOffGUI();
+			}
         }
     }
 
@@ -114,8 +119,9 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
-    public void startup()
+	public void startup(GameObject comp)
     {
+		computer = comp;
         this.transform.position = startPos;
     }
 }
