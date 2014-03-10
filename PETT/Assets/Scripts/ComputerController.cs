@@ -29,6 +29,9 @@ public class ComputerController : MonoBehaviour {
 	}
 
 	public void reacted(ArrayList commands){
+		if (commands.Count <= 0) {
+			this.turnOffGUI();
+		}
 		foreach (string str in commands) {
 			if (str == "up") {
 				platform.GetComponent<MovingPlatform> ().moveUp();
