@@ -14,8 +14,8 @@ public class ComputerControllerRobot : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gui.SetActive (false);
-        //interact();
+		//gui.SetActive (false);
+        interact();
 	}
 	// Update is called once per frame
 	void Update () {

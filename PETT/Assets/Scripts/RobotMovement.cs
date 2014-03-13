@@ -14,7 +14,8 @@ public class RobotMovement : MonoBehaviour
 
     void Start()
     {
-        startPos = this.transform.position;
+        startPos = transform.position;
+        currentDestination = new Vector3(0, -1, 0);
     }
 
     void FixedUpdate()
