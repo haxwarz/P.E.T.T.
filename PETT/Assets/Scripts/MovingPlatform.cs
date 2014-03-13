@@ -52,10 +52,8 @@ public class MovingPlatform : MonoBehaviour
                 this.transform.position = currentDestination;
                 destinations.RemoveAt(0);
             }
-
-			if(destinations.Count <= 0){
-				computer.GetComponent<ComputerController> ().turnOffGUI();
-			}
+            if(destinations.Count <= 0)
+                computer.GetComponent<ComputerController>().turnOffGUI();
         }
     }
 
