@@ -57,10 +57,6 @@ public class Player : MonoBehaviour {
 		if(Input.GetButtonDown("Fire1") && movable){
 			interact();
 		}
-		
-		if(Input.GetButtonDown("Fire2")){
-			movable = !movable;
-		}
 	}
 
 	void OnCollisionStay(Collision collisionInfo) {
@@ -78,11 +74,27 @@ public class Player : MonoBehaviour {
 	}
 
 	public void interact(){
+        print("interact");
 		RaycastHit hitInfo;
 		Vector3 dept = transform.TransformDirection(new Vector3(0,0,1));
 		if (Physics.Raycast (transform.position, dept, out hitInfo, 100, 1 << 9)) {
-			hitInfo.collider.gameObject.GetComponent<ComputerController>().interact();
-			movable = false;
+            ComputerController script = hitInfo.collider.gameObject.GetComponent<ComputerController>();
+            if (script != null)
+            {
+                print("computerController");
+                hitInfo.collider.gameObject.GetComponent<ComputerController>().interact();
+                movable = false;
+            }
+            else
+            {
+                ComputerControllerRobot scriptRobot = hitInfo.collider.gameObject.GetComponent<ComputerControllerRobot>();
+                if (scriptRobot != null)
+                {
+                    print("computerControllerRobot");
+                    hitInfo.collider.gameObject.GetComponent<ComputerControllerRobot>().interact();
+                    movable = false;
+                }
+            }
 		}
 	}
 
