@@ -40,6 +40,8 @@ public class guiInterfaceRobot : MonoBehaviour
                                         //robot.GetComponent<RobotMovement>().rotateRight();
 								} else if (hit == "UploadButton") {
                                     computer.GetComponent<ComputerControllerRobot>().reacted(commands);
+                                    text.text = "Commands:";
+                                    commands = new ArrayList();
                                 } else if (hit == "RemoveButton") {
 										string txt = text.text;
 										int index = txt.LastIndexOf ("\n");

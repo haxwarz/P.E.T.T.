@@ -11,8 +11,13 @@ public class ButtonController : MonoBehaviour {
     {
         this.computer = comp;
     }
-	public void open(){
-        script = computer.GetComponent<ComputerControllerRobot>();
-        script.openDoor();
+    public void open()
+    {
+        if (computer != null)
+        {
+            script = computer.GetComponent<ComputerControllerRobot>();
+            if(script != null)
+                script.openDoor();
+        }
     }
 }

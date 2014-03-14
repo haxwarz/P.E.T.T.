@@ -7,6 +7,7 @@ public class RobotMovement : MonoBehaviour
     //private float timer = 0;
     private ArrayList destinations = new ArrayList();
     private Vector3 startPos;
+    private Quaternion startRotate;
     private GameObject computer;
     private Vector3 currentDestination;
     bool stopped = false;
@@ -14,7 +15,8 @@ public class RobotMovement : MonoBehaviour
 
     void Start()
     {
-        startPos = transform.position;
+        startPos = transform.localPosition;
+        startRotate = transform.rotation;
         currentDestination = new Vector3(0, -1, 0);
     }
 
@@ -22,23 +24,24 @@ public class RobotMovement : MonoBehaviour
     {
         if (currentDestination.y != -1)
         {
-            if (currentDestination.z > this.transform.position.z)
+            if (currentDestination.z > this.transform.localPosition.z)
             {
-                this.transform.position += new Vector3(0, 0, 1) * 1 * Time.deltaTime;
+                this.transform.localPosition += new Vector3(0, 0, 1) * 1 * Time.deltaTime;
             }
-            else if (currentDestination.z < this.transform.position.z)
+            else if (currentDestination.z < this.transform.localPosition.z)
             {
-                this.transform.position += new Vector3(0, 0, 1) * -1 * Time.deltaTime;
+                this.transform.localPosition += new Vector3(0, 0, 1) * -1 * Time.deltaTime;
             }
-            if (currentDestination.x > this.transform.position.x)
+            if (currentDestination.x > this.transform.localPosition.x)
             {
-                this.transform.position += new Vector3(1, 0, 0) * 1 * Time.deltaTime;
+                this.transform.localPosition += new Vector3(1, 0, 0) * 1 * Time.deltaTime;
             }
-            else if (currentDestination.x < this.transform.position.x)
+            else if (currentDestination.x < this.transform.localPosition.x)
             {
-                this.transform.position += new Vector3(1, 0, 0) * -1 * Time.deltaTime;
+                this.transform.localPosition += new Vector3(1, 0, 0) * -1 * Time.deltaTime;
             }
-            if(Vector3.Distance(transform.position, currentDestination) < 0.01){
+            if (Vector3.Distance(transform.localPosition, currentDestination) < 0.01)
+            {
                 currentDestination = new Vector3(0, -1, 0);
             }
         }
@@ -53,11 +56,11 @@ public class RobotMovement : MonoBehaviour
                 string nextDest = (string)destinations[0];
                 if (nextDest == "forward")
                 {
-                    currentDestination = transform.position + transform.forward;
+                    currentDestination = transform.localPosition + transform.forward;
                 }
                 else if (nextDest == "backwards")
                 {
-                    currentDestination = transform.position - transform.forward;
+                    currentDestination = transform.localPosition - transform.forward;
                 }
                 else if (nextDest == "left")
                 {
@@ -93,14 +96,27 @@ public class RobotMovement : MonoBehaviour
     public void startup(GameObject comp)
     {
         computer = comp;
-        this.transform.position = startPos;
+        restart();
+    }
+
+    public void restart()
+    {
         currentDestination = new Vector3(0, -1, 0);
+        this.transform.rotation = startRotate;
+        this.transform.localPosition = startPos;
+        ArrayList destinations = new ArrayList();
     }
 
     void OnTriggerEnter(Collider other)
     {
         stopped = true;
         this.other = other.gameObject;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        print("You crashed");
+        restart();
     }
 }
 
