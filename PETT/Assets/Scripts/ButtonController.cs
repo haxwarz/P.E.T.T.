@@ -4,10 +4,17 @@ using System.Collections;
 public class ButtonController : MonoBehaviour {
 
     public GameObject door;
-    public GameObject computer;
+
+    private GameObject computer;
+    private ComputerControllerRobot script;
 	// Use this for initialization
+
+    public void init( GameObject comp)
+    {
+        this.computer = comp;
+    }
 	public void open(){
-        Destroy(door);
-        computer.GetComponent<ComputerControllerRobot>().turnOffGUI();
+        script = computer.GetComponent<ComputerControllerRobot>();
+        script.openDoor();
     }
 }

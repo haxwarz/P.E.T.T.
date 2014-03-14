@@ -6,6 +6,8 @@ public class ComputerControllerRobot : MonoBehaviour {
 	public GameObject robot;
 	public GameObject gui;
 	public GameObject camera;
+    private GameObject[] buttons;
+    public GameObject door;
 
 	public bool ableLeft;
 	public bool ableRight;
@@ -14,10 +16,13 @@ public class ComputerControllerRobot : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        buttons = GameObject.FindGameObjectsWithTag("Button");
+
+        foreach (GameObject button in buttons)
+        {
+            button.GetComponent<ButtonController>().init(this.gameObject);
+        }
         turnOffGUI();
-	}
-	// Update is called once per frame
-	void Update () {
 
 	}
 
@@ -53,4 +58,10 @@ public class ComputerControllerRobot : MonoBehaviour {
 				camera.SetActive (false);
 				GameObject.Find ("Player").GetComponent<Player> ().setMovable(true);
 		}
+
+    internal void openDoor()
+    {
+        turnOffGUI();
+        Destroy(door);
+    }
 }
