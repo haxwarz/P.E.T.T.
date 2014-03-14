@@ -3,8 +3,6 @@ using System.Collections;
 
 public class ButtonController : MonoBehaviour {
 
-    public GameObject door;
-
     private GameObject computer;
     private ComputerControllerRobot script;
 	// Use this for initialization
