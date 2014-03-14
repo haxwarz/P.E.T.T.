@@ -51,6 +51,6 @@ public class ComputerControllerRobot : MonoBehaviour {
 	public void turnOffGUI(){
 				gui.SetActive (false);
 				camera.SetActive (false);
-				//GameObject.Find ("Player").GetComponent<Player> ().setMovable(true);
+				GameObject.Find ("Player").GetComponent<Player> ().setMovable(true);
 		}
 }
