@@ -17,13 +17,13 @@ public class StoryPoint : MonoBehaviour
 		void Update ()
 		{
 			if(Input.GetKeyDown(KeyCode.Q)){
-				strings.RemoveAt(0);
+                if (strings.Count > 0)
+                { strings.RemoveAt(0); }
 			}
 	
 		}
 
 		void OnTriggerStay(Collider collider){
-            print("test");
             if (collider.gameObject == GameObject.Find("Player"))
             {
                 collider.gameObject.GetComponent<Player>().setMovable(false);
