@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
     public float maxspeed = 5f;
     public float jumpPower = 250f;
+    public float checkRange = 0.01f;
 
     public Vector3 checkpoint;
 
@@ -20,10 +21,8 @@ public class Player : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         grounded = Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
         if (Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("OffWorld")))
@@ -53,12 +52,24 @@ public class Player : MonoBehaviour
             else{
                 rigidbody.velocity=new Vector2(-maxspeed, rigidbody.velocity.y);
             }
-        }*/
-        float move = Input.GetAxis("Horizontal");
+        }
+        */
 
-        Vector3 v = rigidbody.velocity;
-        v.x = move * maxspeed;
-        rigidbody.velocity = v;
+        float move = Input.GetAxis("Horizontal");
+        RaycastHit hitInfo;
+        if (!rigidbody.SweepTest(Vector3.right * move, out hitInfo, checkRange))
+        {
+            Vector3 v = rigidbody.velocity;
+            v.x = move * maxspeed;
+            rigidbody.velocity = v;
+        }
+        else
+        {
+            Vector3 v = rigidbody.velocity;
+            v.x = 0;
+            rigidbody.velocity = v;
+        }
+
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && grounded && movable)
         {
