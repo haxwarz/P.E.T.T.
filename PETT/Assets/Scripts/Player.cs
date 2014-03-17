@@ -71,12 +71,12 @@ public class Player : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && grounded && movable)
+        if (Input.GetButtonDown("Jump") && grounded && movable)
         {
             rigidbody.AddForce(new Vector2(0f, jumpPower));
         }
 
-        if (Input.GetButtonDown("Fire1") && movable)
+        if (Input.GetButtonDown("Interact") && movable)
         {
             interact();
         }
