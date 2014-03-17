@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//TODO: Place Expainatory comments in the code
 public class MovingPlatform : MonoBehaviour
 {
     // Use this for initialization

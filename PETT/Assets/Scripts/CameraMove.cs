@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//TODO: remove unneeded and commented code
+//TODO: Place Expainatory comments in the code
 public class CameraMove : MonoBehaviour {
 	public float leftLimit;// = -3;//GameObject.FindWithTag("leftwall").transform.position.x+2;
 	public float rightLimit = 1.9f;
@@ -9,9 +11,7 @@ public class CameraMove : MonoBehaviour {
 
 	public GameObject camera;
 	// Use this for initialization
-	
-	
-	void Start () {
+    void Start () {
 		//mainCamera = (GameObject) GameObject.FindWithTag ("MainCamera");
 		//leftLimit = GameObject.FindWithTag ("leftwall").transform.position.x + 2.5f;
 	}

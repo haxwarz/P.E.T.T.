@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
-
+//TODO: remove unneeded and uncommented code
+//TODO: Place Expainatory comments in the code
 public class RobotMovement : MonoBehaviour
 {
 
@@ -113,9 +114,9 @@ public class RobotMovement : MonoBehaviour
         this.other = other.gameObject;
     }
 
+    //TODO: Represent that robot crashed on screen instead of on console
     void OnCollisionEnter(Collision collision)
     {
-        print("You crashed");
         restart();
     }
 }

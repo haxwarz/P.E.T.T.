@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+//TODO: Place Expainatory comments in the code
 public class StoryPoint : MonoBehaviour
 {
 		public List<string> strings = new List<string> ();
