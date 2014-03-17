@@ -7,6 +7,7 @@ public class StoryPoint : MonoBehaviour
 		public List<string> strings = new List<string> ();
 		public GameObject pane;
         public TextMesh text;
+        private bool active = false;
 
 		// Use this for initialization
 		void Start ()
@@ -18,7 +19,7 @@ public class StoryPoint : MonoBehaviour
 		void Update ()
 		{
 			if(Input.GetKeyDown(KeyCode.Q)){
-                if (strings.Count > 0)
+                if (strings.Count > 0 && active)
                 { strings.RemoveAt(0); }
 			}
 	
@@ -27,6 +28,7 @@ public class StoryPoint : MonoBehaviour
 		void OnTriggerStay(Collider collider){
             if (collider.gameObject == GameObject.Find("Player"))
             {
+                active = true;
                 collider.gameObject.GetComponent<Player>().setMovable(false);
                 if (strings.Count > 0)
                 {
