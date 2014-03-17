@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
 
         float move = Input.GetAxis("Horizontal");
         RaycastHit hitInfo;
-        if (!rigidbody.SweepTest(Vector3.right * move, out hitInfo, checkRange))
+        if (!rigidbody.SweepTest(Vector3.right * move, out hitInfo, checkRange) && movable)
         {
             Vector3 v = rigidbody.velocity;
             v.x = move * maxspeed;
