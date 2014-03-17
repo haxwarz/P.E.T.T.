@@ -12,7 +12,11 @@ public class EndpointController : MonoBehaviour {
 
 	}
 
-	public void interact(){
-		Application.LoadLevel (Application.loadedLevel+1);
-	}
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject == GameObject.Find("Player"))
+        {
+            Application.LoadLevel(Application.loadedLevel + 1);
+        }
+    }
 }
