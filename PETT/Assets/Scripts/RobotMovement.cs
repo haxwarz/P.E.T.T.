@@ -103,7 +103,7 @@ public class RobotMovement : MonoBehaviour
         currentDestination = new Vector3(0, -1, 0);
         this.transform.rotation = startRotate;
         this.transform.localPosition = startPos;
-        ArrayList destinations = new ArrayList();
+        destinations = new ArrayList();
     }
 
     void OnTriggerEnter(Collider other)

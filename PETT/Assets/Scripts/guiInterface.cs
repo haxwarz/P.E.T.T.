@@ -35,7 +35,9 @@ public class guiInterface : MonoBehaviour
 										commands.Add ("right");
 										text.text += "\nright";
 								} else if (hit == "UploadButton") {
-										computer.GetComponent<ComputerController> ().reacted (commands);
+                                    computer.GetComponent<ComputerController>().reacted(commands);
+                                    text.text = "Commands:";
+                                    commands = new ArrayList();
 
 								} else if (hit == "RemoveButton") {
 										string txt = text.text;

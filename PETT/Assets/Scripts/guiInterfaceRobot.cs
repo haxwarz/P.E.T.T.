@@ -25,19 +25,19 @@ public class guiInterfaceRobot : MonoBehaviour
 								hit = hitInfo.collider.gameObject.name;
 								if (hit == "UpButton") {
 										commands.Add ("up");
-										text.text += "\nup";
+										text.text += "\nForward";
                                         //robot.GetComponent<RobotMovement>().forward();
 								} else if (hit == "DownButton") {
 										commands.Add ("down");
-                                        text.text += "\ndown";
+                                        text.text += "\nBackward";
                                         //robot.GetComponent<RobotMovement>().backwards();
 								} else if (hit == "LeftButton") {
 										commands.Add ("left");
-                                        text.text += "\nleft";
+                                        text.text += "\nTurn left";
                                         //robot.GetComponent<RobotMovement>().rotateLeft();
 								} else if (hit == "RightButton") {
 										commands.Add ("right");
-                                        text.text += "\nright";
+                                        text.text += "\nTurn right";
                                         //robot.GetComponent<RobotMovement>().rotateRight();
 								} else if (hit == "UploadButton") {
                                     computer.GetComponent<ComputerControllerRobot>().reacted(commands);
