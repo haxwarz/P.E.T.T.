@@ -32,11 +32,6 @@ public class Player : MonoBehaviour
             rigidbody.velocity = new Vector2(0f, 0f);
         }
 
-        if (Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Checkpoint")))
-        {
-            checkpoint = this.transform.position;
-        }
-
         /*if(Input.GetKey(KeyCode.RightArrow) && movable){
             if(rigidbody.velocity.x < maxspeed){
                 rigidbody.AddForce(new Vector2(15f,0f));
