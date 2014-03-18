@@ -14,6 +14,7 @@ public class ButtonController : MonoBehaviour {
     
     public void open()
     {
+        print("open");
         if (computer != null)
         {
             script = computer.GetComponent<ComputerControllerRobot>();

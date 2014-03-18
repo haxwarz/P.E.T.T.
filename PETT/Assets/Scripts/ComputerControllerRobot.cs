@@ -9,6 +9,7 @@ public class ComputerControllerRobot : MonoBehaviour {
 	public GameObject camera;
     private GameObject[] buttons;
     public GameObject door;
+    public GameObject button;
 
 	public bool ableLeft;
 	public bool ableRight;
@@ -17,12 +18,8 @@ public class ComputerControllerRobot : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        buttons = GameObject.FindGameObjectsWithTag("Button");
-
-        foreach (GameObject button in buttons)
-        {
-            button.GetComponent<ButtonController>().init(this.gameObject);
-        }
+        button.GetComponent<ButtonController>().init(this.gameObject);
+        
         turnOffGUI();
 
 	}
@@ -55,6 +52,7 @@ public class ComputerControllerRobot : MonoBehaviour {
 	}
 
 	public void turnOffGUI(){
+        print("turnOffGUI");
 				gui.SetActive (false);
 				camera.SetActive (false);
 				GameObject.Find ("Player").GetComponent<Player> ().setMovable(true);

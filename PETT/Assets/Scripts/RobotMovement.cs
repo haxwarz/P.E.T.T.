@@ -1,11 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
-//TODO: remove unneeded and uncommented code
-//TODO: Place Expainatory comments in the code
+
 public class RobotMovement : MonoBehaviour
 {
-
-    //private float timer = 0;
     private ArrayList destinations = new ArrayList();
     private Vector3 startPos;
     private Quaternion startRotate;
@@ -51,6 +48,7 @@ public class RobotMovement : MonoBehaviour
             if (stopped)
             {
                 other.gameObject.GetComponent<ButtonController>().open();
+                stopped = false;
             }
             else if (destinations.Count > 0)
             {
@@ -110,11 +108,14 @@ public class RobotMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        stopped = true;
-        this.other = other.gameObject;
+        if (stopped == false)
+        {
+            restart();
+            stopped = true;
+            this.other = other.gameObject;
+        }
     }
 
-    //TODO: Represent that robot crashed on screen instead of on console
     void OnCollisionEnter(Collision collision)
     {
         restart();
