@@ -3,11 +3,14 @@ using UnityEngine;
 
 public class RobotMovement : MonoBehaviour
 {
+    private enum dirs { up = 0, down = 1, left = 2, right = 3 }
+
     private ArrayList destinations = new ArrayList();
     private Vector3 startPos;
     private Quaternion startRotate;
     private GameObject computer;
     private Vector3 currentDestination;
+
     bool stopped = false;
     GameObject other;
 
