@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RobotMovement : MonoBehaviour
 {
-    private enum dirs { up = 0, down = 1, left = 2, right = 3 }
+    private enum dirs { forward = 0, backward = 1, left = 2, right = 3 }
 
     private ArrayList destinations = new ArrayList();
     private Vector3 startPos;
@@ -55,23 +55,40 @@ public class RobotMovement : MonoBehaviour
             }
             else if (destinations.Count > 0)
             {
-                string nextDest = (string)destinations[0];
-                if (nextDest == "forward")
+                switch ((dirs)destinations[0])
                 {
-                    currentDestination = transform.localPosition + transform.forward;
+                    case dirs.forward:
+                        currentDestination = transform.localPosition + transform.forward;
+                        break;
+                    case dirs.backward:
+                        currentDestination = transform.localPosition - transform.forward;
+                        break;
+                    case dirs.left:
+                        transform.Rotate(Vector3.up, -90);
+                        break;
+                    case dirs.right:
+                        transform.Rotate(Vector3.up, 90);
+                        break;
                 }
-                else if (nextDest == "backwards")
-                {
-                    currentDestination = transform.localPosition - transform.forward;
-                }
-                else if (nextDest == "left")
-                {
-                    transform.Rotate(Vector3.up, -90);
-                }
-                else if (nextDest == "right")
-                {
-                    transform.Rotate(Vector3.up, 90);
-                }
+
+                //string nextDest = (string)destinations[0];
+
+                //if (nextDest == "forward")
+                //{
+                //    currentDestination = transform.localPosition + transform.forward;
+                //}
+                //else if (nextDest == "backwards")
+                //{
+                //    currentDestination = transform.localPosition - transform.forward;
+                //}
+                //else if (nextDest == "left")
+                //{
+                //    transform.Rotate(Vector3.up, -90);
+                //}
+                //else if (nextDest == "right")
+                //{
+                //    transform.Rotate(Vector3.up, 90);
+                //}
                 destinations.RemoveAt(0);
             }
         }
@@ -79,20 +96,20 @@ public class RobotMovement : MonoBehaviour
 
     public void forward()
     {
-        destinations.Add("forward");
+        destinations.Add(dirs.forward);
     }
 
     public void rotateRight()
     {
-        destinations.Add("right");
+        destinations.Add(dirs.right);
     }
     public void rotateLeft()
     {
-        destinations.Add("left");
+        destinations.Add(dirs.left);
     }
     public void backwards()
     {
-        destinations.Add("backwards");
+        destinations.Add(dirs.backward);
     }
 
     public void startup(GameObject comp)

@@ -84,106 +84,26 @@ public class MovingPlatform : MonoBehaviour
                 moving = false;
             }
         }
-        /*
-        if (destinations.Count > 0)
-        {
-            Vector3 currentDestination = (Vector3)destinations[0];
-            if (currentDestination.x < this.transform.position.x)
-            {
-                this.transform.position += Vector3.left * 1 * Time.deltaTime;
-            }
-            else if (currentDestination.x > this.transform.position.x)
-            {
-                this.transform.position += Vector3.right * 1 * Time.deltaTime;
-            }
-
-            if (currentDestination.y > this.transform.position.y)
-            {
-                this.transform.position += Vector3.up * 1 * Time.deltaTime;
-            }
-            else if (currentDestination.y < this.transform.position.y)
-            {
-                this.transform.position += Vector3.down * 1 * Time.deltaTime;
-            }
-
-            float dist = Vector3.Distance(currentDestination, transform.position);
-            if (dist < 0.01)
-            {
-                this.transform.position = currentDestination;
-                destinations.RemoveAt(0);
-            }
-            if(destinations.Count <= 0)
-                computer.GetComponent<ComputerController>().turnOffGUI();
-        }
-         */
     }
 
     public void moveLeft()
     {
         destinations.Add(dirs.left);
-        /*
-        if (destinations.Count == 0)
-        {
-            //if (this.transform.position.x - horizontalMove >= borderLeft)
-                destinations.Add(new Vector3(this.transform.position.x - horizontalMove, this.transform.position.y, this.transform.position.z));
-        }
-        else
-        {
-            Vector3 temp = (Vector3)destinations[destinations.Count - 1];
-            //if(temp.x - horizontalMove >= borderLeft)
-                destinations.Add(new Vector3(temp.x - horizontalMove, temp.y, temp.z));
-        }
-         */
     }
 
     public void moveRight()
     {
         destinations.Add(dirs.right);
-        /*
-        if (destinations.Count == 0)
-        {
-            //if(this.transform.position.x + horizontalMove <= borderRight)
-                destinations.Add(new Vector3(this.transform.position.x + horizontalMove, this.transform.position.y, this.transform.position.z));
-        }
-        else
-        {
-            Vector3 temp = (Vector3)destinations[destinations.Count - 1];
-            //if(temp.x + horizontalMove <= borderRight)
-                destinations.Add(new Vector3(temp.x + horizontalMove, temp.y, temp.z));
-        }*/
     }
 
     public void moveUp()
     {
         destinations.Add(dirs.up);
-        /*
-        if (destinations.Count == 0)
-        {
-            //if(this.transform.position.y + verticalMove <= borderTop)
-                destinations.Add(new Vector3(this.transform.position.x, this.transform.position.y + verticalMove, this.transform.position.z));
-        }
-        else
-        {
-            Vector3 temp = (Vector3)destinations[destinations.Count - 1];
-            //if(temp.y + verticalMove <= borderTop)
-                destinations.Add(new Vector3(temp.x, temp.y + verticalMove, temp.z));
-        }*/
     }
 
     public void moveDown()
     {
         destinations.Add(dirs.down);
-        /*if (destinations.Count == 0)
-        {
-            //if(this.transform.position.y - verticalMove >= borderBot)
-                destinations.Add(new Vector3(this.transform.position.x, this.transform.position.y - verticalMove, this.transform.position.z));
-        }
-        else
-        {
-            Vector3 temp = (Vector3)destinations[destinations.Count - 1];
-            //if(temp.y - verticalMove >= borderBot)
-                destinations.Add(new Vector3(temp.x, temp.y - verticalMove, temp.z));
-        }*/
     }
 
     public void startup(GameObject comp)
