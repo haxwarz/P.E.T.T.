@@ -195,7 +195,7 @@ public class MovingPlatform : MonoBehaviour
     public void restart()
     {
         currentDestination = new Vector3(0, -1, 0);
-        this.transform.localPosition = startPos;
+        this.transform.position = startPos;
         destinations = new ArrayList();
         moving = false;
     }
