@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         groundCheck = transform.Find("groundCheck");
+        checkpoint = this.transform.position;
 
     }
 
