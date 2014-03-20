@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     {
         grounded = Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
-        if (Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("OffWorld")))
+        /*if (Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("OffWorld")))
         {
             this.transform.position = checkpoint;
             rigidbody.velocity = new Vector2(0f, 0f);
